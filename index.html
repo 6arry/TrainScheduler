@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="us-en">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            Train Scheduler
+        </title>
+        <!-- CSS FILES LOADED! -->
+        <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+        <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+        <!-- JQUERY QUERY-ING! -->
+        <script src="https://code.jquery.com/jquery-3.4.0.js"></script> 
+        <!-- FIREBASE ON FIRE! -->
+        <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+        <!-- BOOTSTRAP STRAPPED! -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    </head>
+<body>
+
+  <!-- Employee Tracker -->
+  <div class="container">
+
+    <!-- Jumbotron -->
+    <div class="jumbotron" style="background-color: #424242; color: #3ad4df">
+      <h1 class="text-center">Train Schedule Board</h1>
+      <h3 class="text-center">Smart travel planner</h3>
+    </div>
+
+    <div class="row">
+
+      <div class="col-md-12">
+
+        <!-- Current Employees-->
+        <div class="card mb-4">
+          <div class="card-header">Train Schedule</div>
+          <div class="card-body">
+            <table class="table table-sm table-hover" id='train-table'>
+              <thead>
+                <tr>
+                  <th scope="col">Train Destination</th>
+                  <th scope="col">Line Color</th>
+                  <th scope="col">Arrival Date & Time</th>
+                  <th scope="col">Time Before Arrival</th>
+                  <th scope="col">Departure Date & Time</th>
+                  <th scope="col">Time Before Departure</th>
+                </tr>
+              </thead>
+              <tbody>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <!-- Add Employee  -->
+        <div class="card mb-4">
+          <div class="card-header">Add Train Schedule</div>
+          <div class="card-body">
+
+            <!-- Entry Form -->
+            <form>
+              <div class="form-group">
+                <label for="destination-input">Train Destination</label>
+                <input class="form-control" id="destination-input" placeholder="San Francisco" type="text">
+              </div>
+              <div class="form-group">
+                <label for="color-line-input">Line Color</label>
+                <input class="form-control" id="color-line-input" placeholder="Blue Line" type="text">
+              </div>
+              <div class="form-group">
+                <label for="arrival-day-input">Arrival Day</label>
+                <input class="form-control" id="arrival-day-input" placeholder="Sun Mon - Fri Sat" type="text">
+              </div>
+              <div class="form-group">
+                <label for="arrival-time-input">Arrival Time</label>
+                <input class="form-control" id="arrival-time-input" placeholder="3PM" type="text">
+              </div>
+              <div class="form-group">
+                <label for="departure-day-input">Departure Day</label>
+                <input class="form-control" id="departure-day-input" placeholder="Sun Mon - Fri Sat" type="text">
+              </div>
+              <div class="form-group">
+                <label for="departure-time-input">Arrival Time</label>
+                <input class="form-control" id="departure-time-input" placeholder="3PM" type="text">
+              </div>
+              <button class="btn btn-primary float-right" id="add-train-button">Submit</button>
+            </form>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+<!-- LOADING FATHER-TIME @ THIS VERY MOMENT -->
+<script src="https://momentjs.com/downloads/moment.js"></script>
+<!-- MY jS LOGIC BEING AKNOWLEDGED! -->
+<script src="assets/javascript/moment.js"></script>
+</body>
+</html>
