@@ -11,34 +11,44 @@
   // Initialize Firebase
   firebase.initializeApp(config);
 
+  var database = firebase.database();
+
 //   =========================================================
 
-
-var destination = "";
-var color_line = "";
-var arrival_day = "";
-var arrival_time = "";
-var departure_day = "";
-var departure_time = "";
-var arrival = "";
-var departure = "";
-
-// moment().format('MMMM Do YYYY, h:mm a');
-// moment().format("dddd, MMMM Do YYYY);
-// moment().format("ddd, hA");
-// moment().calendar(referenceTime);
-
+// 
 $('#add-train-button').on('click', function(event) {
     event.preventDefault();
     
-    destination = $('#destination-input').val().trim();
-    color_line = $('#color-line-input').val().trim();
-    arrival_day = $('#arrival-day-input').val().trim();
-    arrival_time = $('#arrival-time-input').val().trim();
-    departure_day = $('#departure-day-input').val().trim();
-    departure_time = $('#departure-time-input').val().trim();
-    arrival =  moment().format("dddd, MMMM Do YYYY");
-    departure = moment().format("dddd, MMMM Do YYYY");
-        console.log(arrival);
-        console.log(departure);
+    var destination = $('#destination-input').val().trim();
+    var color_line = $('#color-line-input').val().trim();
+    var arrival_day = moment($('#arrival-day-input').val().trim(), 'MM/DD/YYYY').format('X');
+    var departure_day = moment($('#departure-day-input').val().trim(), 'MM/DD/YYYY').format('X');
+        console.log(arrival_day);
+        console.log(departure_day);
+
+    var new_train = {
+      destination: destination,
+      color: color_line,
+      arrival: arrival_day,
+      departure: departure_day
+    };
+
+    database.ref().push(new_train);
+
+    console.log(new_train.destination)
+    console.log(new_train.color)
+    console.log(new_train.arrival)
+    console.log(new_train.departure)
+
+    $('#destination-input').val('');
+    $('#color-line-input').val('');
+    $('#arrival-day-input').val('');
+    $('#departure-day-input').val('');
+
 });
+
+database.ref().on('child_added', function(childSnapshot){
+  console.log(childSnapshot.val());
+
+  
+}
