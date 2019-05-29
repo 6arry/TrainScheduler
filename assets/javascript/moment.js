@@ -21,10 +21,10 @@ $('#add-train-button').on('click', function(event) {
     
     var destination = $('#destination-input').val().trim();
     var color_line = $('#color-line-input').val().trim();
-    var arrival_day = moment($('#arrival-day-input').val().trim(), 'MM/DD/YYYY').format('X');
-    var departure_day = moment($('#departure-day-input').val().trim(), 'MM/DD/YYYY').format('X');
-        console.log(arrival_day);
-        console.log(departure_day);
+    var arrival_day = moment($('#arrival-day-input').val().trim(), 'MM/DD/YYYY').format('dddd, MMMM Do YYYY');
+    var departure_day = moment($('#departure-day-input').val().trim(), 'MM/DD/YYYY').format('dddd, MMMM Do YYYY');
+        // console.log(arrival_day);
+        // console.log(departure_day);
 
     var new_train = {
       destination: destination,
@@ -35,10 +35,10 @@ $('#add-train-button').on('click', function(event) {
 
     database.ref().push(new_train);
 
-    console.log(new_train.destination)
-    console.log(new_train.color)
-    console.log(new_train.arrival)
-    console.log(new_train.departure)
+    // console.log(new_train.destination)
+    // console.log(new_train.color)
+    // console.log(new_train.arrival)
+    // console.log(new_train.departure)
 
     $('#destination-input').val('');
     $('#color-line-input').val('');
@@ -50,5 +50,17 @@ $('#add-train-button').on('click', function(event) {
 database.ref().on('child_added', function(childSnapshot){
   console.log(childSnapshot.val());
 
+  var train_destination = childSnapshot.val().destination;
+  var train_color = childSnapshot.val().color;
+  var train_arrival = childSnapshot.val().arrival;
+  var train_departure = childSnapshot.val().departure;
+
+  var added_train = $('<tr>').append(
+		$('<td>').text(train_destination),
+		$('<td>').text(train_color),
+		$('<td>').text(train_arrival),
+		$('<td>').text(train_departure)
+  );
   
-}
+	$('#train-table > tbody').append(added_train);
+});
